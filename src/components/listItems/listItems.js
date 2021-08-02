@@ -14,6 +14,7 @@ export default class ListItems extends Component {
     }
     render() {
         const {codes} = this.props;
+           // eslint-disable-next-line array-callback-return
            const elements = codes.map((item, i) => {
                if(i < 5) return(<ListItem key={item.id}>{item.vin}</ListItem>)
             })

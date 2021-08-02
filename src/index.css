@@ -5,7 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('banner.jpg') center / cover;
+  /* background: url('banner.jpg') center / cover;
+  backdrop-filter: blur(5px); */
+}
+
+body span, li{
+  /* font-size: 32px; */
+}
+
+body h2 {
+  /* font-size: 42px; */
+  
 }
 
 code {
