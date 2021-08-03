@@ -28,9 +28,9 @@ export default class App extends Component {
     this.updateVin();
     this.state = {
       data: [
-        { vin: '1HGCS1B8XBA006385', id: 1 },
-        { vin: 'JN1AZ4EH7DM430111', id: 2 },
-        { vin: '1FTFW1CT5DFC10312', id: 3 },
+        // { vin: '1HGCS1B8XBA006385', id: 1 },
+        // { vin: 'JN1AZ4EH7DM430111', id: 2 },
+        // { vin: '1FTFW1CT5DFC10312', id: 3 },
       ],
       vinDecoder: []
     }
@@ -86,11 +86,8 @@ export default class App extends Component {
   }
   render() {
     const { data, vinDecoder } = this.state;
-    // console.log('vinDecoder: ', vinDecoder);
     return (
       <Wrapper>
-        
-        {/* <LastVinCodes  /> */}
         <AppHeader onAdd={this.addItem} codes={data}/>
         <ResultVinDecoder codes={vinDecoder}/>
       </Wrapper>

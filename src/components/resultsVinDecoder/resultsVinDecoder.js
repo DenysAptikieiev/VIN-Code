@@ -24,7 +24,6 @@ export default class ResultVinDecoder extends Component {
 
     render() {
         const {codes} = this.props;
-        console.log('codes: ', codes);
         const element = codes.map(item => {
             return(
                 <span key={item.VariableId}>{item.Variable || 'No data'}: {item.Value || 'No data'}</span>

@@ -1,27 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const ListItem = styled.li`
     list-style: none;
 `;
 
-export default class ListItems extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-    render() {
-        const {codes} = this.props;
-           // eslint-disable-next-line array-callback-return
-           const elements = codes.map((item, i) => {
-               if(i < 5) return(<ListItem key={item.id}>{item.vin}</ListItem>)
-            })
-            return (
-               <>
-                    {elements}
-               </>
-            )
-    }
+const ListItems = () => {
+    const { codes } = this.props;
+    // eslint-disable-next-line array-callback-return
+    const elements = codes.map((item, i) => {
+        if (i < 5) return (<ListItem key={item.id}>{item.vin}</ListItem>)
+    })
+    return (
+        <>
+            {elements}
+        </>
+    )
 }
+
+export default ListItems;

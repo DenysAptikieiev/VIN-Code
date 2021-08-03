@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
@@ -20,11 +21,9 @@ const SectionForm = styled.section`
 
 const BlockInfo = styled.div`
     ${flexCenter};
-
     h1 {
         font-size: 24px;
     }
-
     button {
         width: 40px;
         height: 40px;
@@ -38,7 +37,6 @@ const BlockInfo = styled.div`
 const Form = styled.form`
     ${flexCenter};
     position: relative;
-
     input {
         border-radius: 20px;
         font-size: 20px;
@@ -158,11 +156,13 @@ export default class AppHeader extends Component {
                 lastValue: !this.state.lastValue,
                 value: value,
             })
+            this.props.onAdd(value)
         }
     }
 
     render() {
         const { codes } = this.props;
+        // eslint-disable-next-line array-callback-return
         const lastVinItems = codes.map((item, i) => {
             if (i < 5) return (<ListItem
                 key={item.id}
@@ -192,7 +192,6 @@ export default class AppHeader extends Component {
                     <button className=""><img src={find} alt="" /></button>
                 </Form>
                 <BlockLastVin lastValue={this.state.lastValue}>{lastVinItems}</BlockLastVin>
-
             </SectionForm>
         )
     }
