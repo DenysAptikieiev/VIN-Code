@@ -19,7 +19,6 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: strach;
   flex-direction: column;
-
 `;
 
 export default class App extends Component {
@@ -39,57 +38,62 @@ export default class App extends Component {
   }
 
   vinService = new vinService();
-  
-  updateVin(vinCode = '1HGCS1B8XBA006385') {
-    this.vinService.vehicleCharacteristics(vinCode)
+
+  updateVin(vinCode) {
+    if (vinCode) {
+      this.vinService.vehicleCharacteristics(vinCode)
         .then(data => {
-            const result = data.Results;
-            const variable = result.filter(item => {
-                switch(item.Variable) {
-                    case "Model": 
-                        return item;
-                    case "Make":
-                        return item;
-                    case "Model Year":
-                        return item;
-                    case "Body Class":
-                        return item;
-                    case "Transmission Style":
-                        return item;
-                    case "Transmission Speeds":
-                        return item;
-                    case "Gross Vehicle Weight Rating From":
-                        return item;
-                    case "Displacement (L)":
-                        return item;
-                    default:
-                        return null;
-                }
-            });
-            this.setState({
-              vinDecoder: [...variable]
-            })
+          const result = data.Results;
+          const variable = result.filter(item => {
+            switch (item.Variable) {
+              case "Model":
+                return item;
+              case "Make":
+                return item;
+              case "Model Year":
+                return item;
+              case "Body Class":
+                return item;
+              case "Transmission Style":
+                return item;
+              case "Transmission Speeds":
+                return item;
+              case "Gross Vehicle Weight Rating From":
+                return item;
+              case "Displacement (L)":
+                return item;
+              default:
+                return null;
+            }
+          });
+          this.setState({
+            vinDecoder: [...variable]
+          })
         })
-}
+    }
+  }
   addItem(body) {
     const newItem = {
       vin: body,
       id: nextId(),
     };
+    this.updateVin(body)
+
     this.setState(({ data }) => {
-      const newData = [newItem, ...data ];
+      const elem = data.find(item => item.vin === body);
+      if(elem !== undefined) return;
+      const newData = [newItem, ...data];
       return {
         data: newData,
       }
     })
-    this.updateVin(body)
   }
   render() {
     const { data, vinDecoder } = this.state;
     return (
       <Wrapper>
-        <AppHeader onAdd={this.addItem} codes={data}/>
-        <ResultVinDecoder codes={vinDecoder}/>
+        <AppHeader onAdd={this.addItem} codes={data} />
+        <ResultVinDecoder codes={vinDecoder} />
       </Wrapper>
     )
   }
