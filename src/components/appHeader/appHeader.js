@@ -150,6 +150,10 @@ const BlockLastVin = styled.ul`
         border-radius: 0 0 20px 20px;
         display: ${props => props.lastValue ? 'block' : 'none'};
 
+        .list-item-vin {
+            cursor: pointer;
+        }
+
         @media(min-width: 280px) and (max-width: 530px) {
             width: 250px;
         }

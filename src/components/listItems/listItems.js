@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const ListItem = styled.li`
     list-style: none;
+    cursor: pointer;
 `;
 
 const ListItems = () => {
